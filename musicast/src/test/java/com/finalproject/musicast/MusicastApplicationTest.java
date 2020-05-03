@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WastelessApplicationTests {
+class MusicastApplicationTest {
 
     @Autowired
     private PlaylistRepository playlistRepository;
@@ -22,7 +22,7 @@ class WastelessApplicationTests {
     private UserRepository userRepository;
 
     @Test
-    @DisplayName("Create Playlist Test ")
+    @DisplayName("Create Playlist test")
     void createListTest() {
 
         Playlist created = playlistRepository.save(getList());
@@ -38,7 +38,7 @@ class WastelessApplicationTests {
     }
 
     @Test
-    @DisplayName("Create Song Test ")
+    @DisplayName("Create Playlist test")
     void createSongTest() {
 
         Song created = songRepository.save(getSong());

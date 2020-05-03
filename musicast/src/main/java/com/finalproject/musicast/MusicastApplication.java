@@ -12,9 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @SpringBootApplication
 @EnableJpaRepositories
@@ -32,7 +29,7 @@ public class MusicastApplication {
     }
 
     @PostConstruct
-    public void initDb() throws ParseException {
+    public void initDb() {
 
         User user = new User("user", "pass");
         userRepository.save(user);
