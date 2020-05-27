@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Playlists</h2>
+<h3>Add a new playlist:</h3>
+<form th:action="@{/playlists}" method="post">
+        <pre>
+        PlayList Name:  <input name="name"/><br/>
+        <input type="submit" value="Save">
+            </pre>
+</form>
+
+<h3>Your PlayLists</h3>
+<table style="width:50%;text-align:left;margin-left:100px;margin-bottom:50px;">
+    <tr>
+        <th>Id</th>
+        <th>PlayList Name</th>
+    </tr>
+    <tr th:each="list : ${playlists}">
+        <td th:text="${list.playlistId}"></td>
+        <td th:text="${list.name}"></td>
+        <td>
+            <form th:action="@{/playlists/{playlistId}(playlistId=${list.playlistId})}" method="post">
+                <input type="submit" value="View Songs"/>
+            </form>
+        </td>
+        <td>
+
+        </td>
+    </tr>
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Log Out"/>
+</form>
+<h1>
+
+</h1>
+
+</body>
+</html>

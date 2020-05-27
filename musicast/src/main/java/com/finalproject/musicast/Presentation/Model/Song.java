@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity(name = "SONG")
 public class Song {
@@ -14,12 +15,21 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int songId;
+    private int playlistId;
     private String username;
     private String name;
     private String artist;
     private String genre;
 
     public Song(String username, String name, String artist, String genre) {
+        this.username = username;
+        this.name = name;
+        this.artist = artist;
+        this.genre = genre;
+    }
+
+    public Song(int playlistId, String username, @NotNull String name, @NotNull String artist, String genre) {
+        this.playlistId = playlistId;
         this.username = username;
         this.name = name;
         this.artist = artist;
@@ -35,6 +45,14 @@ public class Song {
 
     public void setSongId(int songId) {
         this.songId = songId;
+    }
+
+    public int getPlaylistId() {
+        return playlistId;
+    }
+
+    public void setPlaylistId(int playlistId) {
+        this.playlistId = playlistId;
     }
 
     public String getUsername() {

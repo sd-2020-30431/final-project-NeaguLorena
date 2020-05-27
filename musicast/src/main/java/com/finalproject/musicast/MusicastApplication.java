@@ -37,7 +37,7 @@ public class MusicastApplication {
         Playlist list = new Playlist("user", "summer playlist");
         playlistRepository.save(list);
 
-        Song Song = new Song("user", "Animals", "Martin Garrix", "EDM");
+        Song Song = new Song(1, "user", "Animals", "Martin Garrix", "EDM");
 
         Song Song2 = new Song("user", "Paradise", "Coldplay", "rock");
 

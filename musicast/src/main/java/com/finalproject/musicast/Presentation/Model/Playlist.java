@@ -15,19 +15,15 @@ public class Playlist {
     private int playlistId;
     private String username;
     private String name;
-    @Transient
-    private List<Song> songs;
 
     public Playlist(String username, String name, List<Song> songs) {
         this.username = username;
         this.name = name;
-        this.songs = songs;
     }
 
     public Playlist(String username, String name) {
         this.username = username;
         this.name = name;
-        this.songs = new ArrayList<>();
     }
 
     public Playlist() {
@@ -57,11 +53,4 @@ public class Playlist {
         this.name = name;
     }
 
-    public List<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
-    }
 }

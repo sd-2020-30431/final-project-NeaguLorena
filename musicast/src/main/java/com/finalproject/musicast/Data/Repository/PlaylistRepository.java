@@ -8,5 +8,8 @@ import java.util.List;
 
 @Repository
 public interface PlaylistRepository extends JpaRepository<Playlist, Integer> {
+
     List<Playlist> getAllByUsername(String username);
+
+    Playlist getPlaylistByPlaylistId(int playlistId);
 }

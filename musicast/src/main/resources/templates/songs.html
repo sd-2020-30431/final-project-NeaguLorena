@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:if="${NullPointerException}">
+    Something went wrong.
+</div>
+
+<h2>Songs in the playlist</h2>
+<h3>Add a new song to the playlist</h3>
+<form th:action="@{/playlists/{playlistId}(playlistId=${playlistId})}" method="post">
+        <pre>
+            Name:        <input name="name"/><br/>
+            Aritst:      <input name="artist"/><br/>
+            Genre:       <input name="genre"/><br>
+        <input type="submit" value="Save">
+            </pre>
+</form>
+<h3>Songs </h3>
+<table style="width:50%;text-align:left;margin-left:100px;margin-bottom:50px;">
+    <tr>
+        <th>Name</th>
+        <th>Artist</th>
+        <th>Genre</th>
+    </tr>
+    <tr th:each="song:${playlist_songs}">
+        <td th:text="${song.name}"></td>
+        <td th:text="${song.artist}"></td>
+        <td th:text="${song.genre}"></td>
+        <td>
+
+        </td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
