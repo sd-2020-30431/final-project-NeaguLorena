@@ -12,6 +12,9 @@ public class Weather {
     private float temperature;
     private String forecast;
 
+    public Weather() {
+    }
+
     public Weather(String location, float temperature, String forecast) {
         this.location = location;
         this.temperature = temperature;
@@ -40,5 +43,11 @@ public class Weather {
 
     public void setForecast(String forecast) {
         this.forecast = forecast;
+    }
+
+    public void update (float temperature, float rain, String location){
+        this.temperature = temperature;
+        this.location = location;
+        this.forecast=(rain > 40?forecast="rainy":"sunny");
     }
 }

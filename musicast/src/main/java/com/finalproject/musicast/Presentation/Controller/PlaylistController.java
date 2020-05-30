@@ -32,11 +32,9 @@ public class PlaylistController {
     }
 
     @GetMapping("/playlists")
-    public String getAllPlaylists(Principal principal, Model model) throws IOException {
+    public String getAllPlaylists(Principal principal, Model model){
         List<Playlist> playlists = playlistRepository.getAllByUsername(principal.getName());
-        model.addAttribute("temperature", Weather.getTemperatureAPI());
         model.addAttribute("playlists", playlists);
         return "index";
     }
-
 }

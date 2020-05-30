@@ -1,7 +1,10 @@
 package com.finalproject.musicast.Presentation.Controller;
 
+import com.finalproject.musicast.Bussiness.Service.PlaylistGeneratorService;
+import com.finalproject.musicast.Bussiness.Service.WeatherService;
 import com.finalproject.musicast.Data.Repository.SongRepository;
 import com.finalproject.musicast.Presentation.Model.Song;
+import com.finalproject.musicast.Presentation.Model.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -18,6 +22,16 @@ public class SongController {
 
     @Autowired
     SongRepository songRepository;
+    PlaylistGeneratorService playlistGeneratorService;
+    WeatherService weatherService;
+    Weather weather;
+
+
+    public SongController(PlaylistGeneratorService playlistGeneratorService, WeatherService weatherService ) {
+        this.playlistGeneratorService = playlistGeneratorService;
+        this.weatherService = weatherService;
+        this.weather = new Weather();
+    }
 
     @PostMapping("/playlists/{playlistId}")
     public String createSong(@Valid Song song, Principal principal){
@@ -39,4 +53,13 @@ public class SongController {
         return "songs";
     }
 
+    @GetMapping("/generate-playlist-weather")
+    public String generatePlaylistByWeather(Principal principal, Model model) throws IOException {
+        List<Song> songs = songRepository.findAllByUsername(principal.getName());
+        weatherService.getTemperatureAPI(this.weather);
+        List<Song> playlist = playlistGeneratorService.playlistGenerate(songs,this.weather.getForecast());
+        model.addAttribute("moodPlaylist", playlist);
+        model.addAttribute("temperature", weather.getTemperature());
+        return "index";
+    }
 }

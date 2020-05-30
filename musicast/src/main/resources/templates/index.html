@@ -3,7 +3,19 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<td th:text="${temperature}"></td>
+<form th:action="@{/generate-playlist-weather}">
+    <td th:text="${temperature}"></td>
+
+    <tr>
+        <th>Id</th>
+        <th>Song Name</th>
+    </tr>
+    <tr th:each="song : ${moodPlaylist}">
+        <td th:text="${song.name}"></td>
+        <td th:text="${song.artist}"></td>
+    </tr>
+</form>
+
 
 <h2>Playlists</h2>
 <h3>Add a new playlist:</h3>
