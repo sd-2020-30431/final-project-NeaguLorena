@@ -1,4 +1,4 @@
-package com.finalproject.musicast.Presentation.Model.Controller;
+package com.finalproject.musicast.Presentation.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

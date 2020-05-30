@@ -3,6 +3,8 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 
+<td th:text="${temperature}"></td>
+
 <h2>Playlists</h2>
 <h3>Add a new playlist:</h3>
 <form th:action="@{/playlists}" method="post">

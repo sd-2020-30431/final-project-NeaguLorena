@@ -1,4 +1,4 @@
-package com.finalproject.musicast.Presentation.Model.Controller;
+package com.finalproject.musicast.Presentation.Controller;
 
 import com.finalproject.musicast.Data.Repository.SongRepository;
 import com.finalproject.musicast.Presentation.Model.Song;
